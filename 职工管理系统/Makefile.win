@@ -1,0 +1,40 @@
+# Project: 基于多态的职工管理系统
+# Makefile created by Dev-C++ 5.11
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+OBJ      = boss.o employee.o manager.o workManager.o 职工管理系统.o
+LINKOBJ  = boss.o employee.o manager.o workManager.o 职工管理系统.o
+LIBS     = -L"E:/Dev-Cpp/MinGW64/lib" -L"E:/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libstdc++ -static-libgcc -leasyx -lgdi32 -lole32 -lwinmm -static
+INCS     = -I"E:/Dev-Cpp/MinGW64/include" -I"E:/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"E:/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
+CXXINCS  = -I"E:/Dev-Cpp/MinGW64/include" -I"E:/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"E:/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"E:/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
+BIN      = 基于多态的职工管理系统.exe
+CXXFLAGS = $(CXXINCS) -std=gnu++11
+CFLAGS   = $(INCS) -std=gnu++11
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+boss.o: boss.cpp
+	$(CPP) -c boss.cpp -o boss.o $(CXXFLAGS)
+
+employee.o: employee.cpp
+	$(CPP) -c employee.cpp -o employee.o $(CXXFLAGS)
+
+manager.o: manager.cpp
+	$(CPP) -c manager.cpp -o manager.o $(CXXFLAGS)
+
+workManager.o: workManager.cpp
+	$(CPP) -c workManager.cpp -o workManager.o $(CXXFLAGS)
+
+职工管理系统.o: 职工管理系统.cpp
+	$(CPP) -c 职工管理系统.cpp -o 职工管理系统.o $(CXXFLAGS)
